@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace MovieRentalStore
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private int CustomerRowIndex, MovieRowIndex, RentalRowIndex;
         private int MovieID, customerID, RentalRowID;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -335,6 +335,23 @@ namespace MovieRentalStore
                     ResetCustomerFields();
                 }
             }
+        }
+
+        private void MoviesList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ViewBtn_Click(object sender, EventArgs e)
+        {
+            Database.TopUser();
+
+        }
+
+        private void topMovieBtn_Click(object sender, EventArgs e)
+        {
+            Database.TopRentedMovie();
+
         }
 
         private void Return_Click(object sender, EventArgs e)

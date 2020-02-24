@@ -30,7 +30,7 @@ namespace MovieRentalStore
                     _cmd = new SqlCommand("INSERT INTO " + table + columns + " VALUES " + values, conn);
                 }
 
-                for(int i = 0; i < fieldValues.Length; i++)
+                for (int i = 0; i < fieldValues.Length; i++)
                 {
                     _cmd.Parameters.AddWithValue(fieldValues[i], inputs[i]);
                 }
@@ -58,7 +58,7 @@ namespace MovieRentalStore
                     _cmd = new SqlCommand("UPDATE " + table + " SET " + values, conn);
                 }
 
-                for(int i = 0; i < fieldValues.Length; i++)
+                for (int i = 0; i < fieldValues.Length; i++)
                 {
                     _cmd.Parameters.AddWithValue(inputs[i], fieldValues[i]);
                 }
@@ -101,7 +101,7 @@ namespace MovieRentalStore
         public static bool HasRentedCopies(int MovieID)
         {
             List<string> moviesList = new List<string>();
-            using(SqlConnection conn = new SqlConnection(GetConnection()))
+            using (SqlConnection conn = new SqlConnection(GetConnection()))
             {
                 // Open Connection
                 conn.Open();
@@ -110,7 +110,7 @@ namespace MovieRentalStore
                 _cmd.Parameters.AddWithValue("@id", MovieID.ToString());
                 SqlDataReader reader;
                 reader = _cmd.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     moviesList.Add(reader["RentalID"].ToString());
                 }
@@ -128,7 +128,7 @@ namespace MovieRentalStore
         public static bool HasUserRentedMovie(int customerID)
         {
             List<string> MoviesList = new List<string>();
-            using(SqlConnection conn = new SqlConnection(GetConnection()))
+            using (SqlConnection conn = new SqlConnection(GetConnection()))
             {
                 // Open Connection
                 conn.Open();
@@ -137,7 +137,7 @@ namespace MovieRentalStore
                 _cmd.Parameters.AddWithValue("@id", customerID);
                 SqlDataReader reader;
                 reader = _cmd.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     MoviesList.Add(reader["RentalID"].ToString());
                 }
@@ -151,5 +151,40 @@ namespace MovieRentalStore
             return HasUserRentedMovie(CustomerID);
         }
 
+        public static void TopUser()
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnection()))
+            {                
+
+                conn.Open();
+
+                SqlCommand _cmd = new SqlCommand("Select CustomerID, COUNT(*) AS TC FROM Rented Group BY CustomerID ORDER BY TC DESC", conn);
+
+                _cmd.ExecuteNonQuery();
+
+                MessageBox.Show("the top customer is: " +_cmd.ExecuteScalar());
+
+                conn.Close();
+                
+            }
+        }
+
+        public static void TopRentedMovie()
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnection()))
+            {
+
+                conn.Open();
+
+                SqlCommand _cmd = new SqlCommand("Select MovieID, COUNT(*) AS TM FROM Rented Group BY MovieID ORDER BY TM DESC ", conn);
+
+                _cmd.ExecuteNonQuery();
+
+                MessageBox.Show("the top rented movie is: " + _cmd.ExecuteScalar());
+
+                conn.Close();
+
+            }
+        }
     }
 }

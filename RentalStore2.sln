@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalStore2", "RentalStore2.csproj", "{7501520B-50AC-4404-897A-4FBA7959301F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalStore2UnitTesting", "MovieRentalStoreUnitTesting\RentalStore2UnitTesting.csproj", "{6913E6B4-2804-48BD-8B7F-6A4B2FB9E84F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalStore2UnitTesting", "RentalStore2UnitTesting\RentalStore2UnitTesting.csproj", "{6913E6B4-2804-48BD-8B7F-6A4B2FB9E84F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

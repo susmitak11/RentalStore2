@@ -1,6 +1,6 @@
 ﻿namespace MovieRentalStore
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Tab_Movies = new System.Windows.Forms.TabPage();
+            this.viewBtn = new System.Windows.Forms.Button();
             this.MoviesList = new System.Windows.Forms.DataGridView();
             this.RowID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MovieTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,6 +90,7 @@
             this.Customer_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rent_Till = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.topMovieBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Tab_Movies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoviesList)).BeginInit();
@@ -113,6 +115,8 @@
             // 
             // Tab_Movies
             // 
+            this.Tab_Movies.Controls.Add(this.topMovieBtn);
+            this.Tab_Movies.Controls.Add(this.viewBtn);
             this.Tab_Movies.Controls.Add(this.MoviesList);
             this.Tab_Movies.Controls.Add(this.deleteMovie);
             this.Tab_Movies.Controls.Add(this.modifyMovieSelected);
@@ -139,6 +143,16 @@
             this.Tab_Movies.Text = "Movies";
             this.Tab_Movies.UseVisualStyleBackColor = true;
             // 
+            // viewBtn
+            // 
+            this.viewBtn.Location = new System.Drawing.Point(871, 393);
+            this.viewBtn.Name = "viewBtn";
+            this.viewBtn.Size = new System.Drawing.Size(308, 37);
+            this.viewBtn.TabIndex = 19;
+            this.viewBtn.Text = "Top Customer";
+            this.viewBtn.UseVisualStyleBackColor = true;
+            this.viewBtn.Click += new System.EventHandler(this.ViewBtn_Click);
+            // 
             // MoviesList
             // 
             this.MoviesList.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -156,6 +170,7 @@
             this.MoviesList.Size = new System.Drawing.Size(861, 607);
             this.MoviesList.TabIndex = 18;
             this.MoviesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MoviesList_CellClick);
+            this.MoviesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MoviesList_CellContentClick);
             // 
             // RowID
             // 
@@ -614,6 +629,8 @@
             // 
             // Return
             // 
+            this.Return.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Return.ForeColor = System.Drawing.Color.Navy;
             this.Return.Location = new System.Drawing.Point(1028, 291);
             this.Return.Name = "Return";
             this.Return.Size = new System.Drawing.Size(153, 45);
@@ -624,6 +641,8 @@
             // 
             // Rent
             // 
+            this.Rent.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rent.ForeColor = System.Drawing.Color.Navy;
             this.Rent.Location = new System.Drawing.Point(871, 291);
             this.Rent.Name = "Rent";
             this.Rent.Size = new System.Drawing.Size(153, 45);
@@ -643,10 +662,10 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(868, 242);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(61, 18);
+            this.label14.Size = new System.Drawing.Size(89, 25);
             this.label14.TabIndex = 6;
             this.label14.Text = "Rent Till";
             // 
@@ -661,21 +680,21 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(868, 197);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(79, 18);
+            this.label13.Size = new System.Drawing.Size(102, 25);
             this.label13.TabIndex = 4;
             this.label13.Text = "Rent From";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Tai Le", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Brown;
+            this.label12.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Navy;
             this.label12.Location = new System.Drawing.Point(931, 4);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(182, 48);
+            this.label12.Size = new System.Drawing.Size(180, 45);
             this.label12.TabIndex = 3;
             this.label12.Text = "RENTING";
             // 
@@ -731,13 +750,23 @@
             this.Rent_Till.ReadOnly = true;
             this.Rent_Till.Width = 255;
             // 
-            // Form1
+            // topMovieBtn
+            // 
+            this.topMovieBtn.Location = new System.Drawing.Point(871, 436);
+            this.topMovieBtn.Name = "topMovieBtn";
+            this.topMovieBtn.Size = new System.Drawing.Size(308, 37);
+            this.topMovieBtn.TabIndex = 20;
+            this.topMovieBtn.Text = "Top Movie";
+            this.topMovieBtn.UseVisualStyleBackColor = true;
+            this.topMovieBtn.Click += new System.EventHandler(this.topMovieBtn_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1199, 642);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
@@ -819,6 +848,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Customer_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentFrom;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rent_Till;
+        private System.Windows.Forms.Button viewBtn;
+        private System.Windows.Forms.Button topMovieBtn;
     }
 }
 
